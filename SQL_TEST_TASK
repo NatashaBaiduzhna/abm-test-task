@@ -1,0 +1,7 @@
+SELECT wp.sku, wp.warehouse_code FROM warehouse_products wp WHERE wp.id IN ( SELECT f.warehouse_product_id FROM facts.f WHERE (f.season = true OR f.season_erp = true) AND f.date BETWEEN '20/9/23' AND '25/9/23' AND f.qnt_out_sale = 0);
+
+UPDATE facts SET qnt_out_write_off = 5 WHERE warehouse_product_id = 215 AND date IN ('19/9/23','22/9/23','24/9/23','25/9/23');
+
+SELECT COUNT(*) FROM warehouse_products WHERE active = true AND state = 1 AND warehouse_code = 5;
+
+SELECT * FROM warehouse_products WHERE buffer > 0 ORDER BY buffer_date, sku, warehouse_code;
